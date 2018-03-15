@@ -9,16 +9,16 @@
  * @author victor
  */
 public class MainFrame extends javax.swing.JFrame {
-    
+
     private enum OperatorType {
         NONE, ADD, SUBTRACT, MULTIPLY, DIVIDE
     }
-    
+
     private double accumulator, operand;
     private OperatorType operator;
     private char decimalSeparator;
-    private boolean erase;    
-    
+    private boolean erase;
+
     public MainFrame() {
         initComponents();
     }
@@ -275,7 +275,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
-        
+
         textFieldDisplay.setText(textFieldDisplay.getText() + "1");
     }//GEN-LAST:event_btn1ActionPerformed
 
@@ -340,7 +340,13 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEqualActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+        String s = textFieldDisplay.getText();
+
+        if (s.length() > 0) {
+            String subS = s.substring(0, s.length() - 1);
+            textFieldDisplay.setText(subS);
+        }
+
     }//GEN-LAST:event_btnBackActionPerformed
 
     /**
