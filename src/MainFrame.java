@@ -12,37 +12,37 @@ import java.util.Locale;
  * @author victor
  */
 public class MainFrame extends javax.swing.JFrame {
-
+    
     private enum OperatorType {
         NONE, ADD, SUBTRACT, MULTIPLY, DIVIDE
     }
-
+    
     private double accumulator, operand;
     private OperatorType operator;
     private char decimalSeparator;
     private boolean erase;
-
+    
     public MainFrame() {
         initComponents();
-
+        
         initMyFields();
     }
-
+    
     public void initMyFields() {
         accumulator = 0;
         operand = 0;
         operator = OperatorType.NONE;
         erase = false;
         decimalSeparator = getDedicimalSeparator();
-
+        
     }
-
+    
     public char getDedicimalSeparator() {
         DecimalFormatSymbols dfs = new DecimalFormatSymbols(
                 Locale.getDefault());
         return dfs.getDecimalSeparator();
     }
-
+    
     private void calculateResult() {
         operand = Double.parseDouble(textFieldDisplay.getText());
         switch (operator) {
@@ -62,11 +62,11 @@ public class MainFrame extends javax.swing.JFrame {
                 accumulator = operand;
         }
     }
-
+    
     private void displayResult() {
         textFieldDisplay.setText("" + accumulator);
     }
-
+    
     private void eraseIfReadedAndWriteNumber(String numberStr) {
         if (erase) {
             textFieldDisplay.setText("");
@@ -327,7 +327,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
-
+        
         eraseIfReadedAndWriteNumber("1");
     }//GEN-LAST:event_btn1ActionPerformed
 
@@ -368,18 +368,19 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn0ActionPerformed
 
     private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
-        // TODO add your handling code here:
+        initMyFields();
+        textFieldDisplay.setText("");
     }//GEN-LAST:event_btnCActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-
+        
         if (!erase) {
             erase = true;
             calculateResult();
             displayResult();
             operator = OperatorType.ADD;
         }
-
+        
 
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -420,7 +421,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         String s = textFieldDisplay.getText();
-
+        
         if (s.length() > 0) {
             String subS = s.substring(0, s.length() - 1);
             textFieldDisplay.setText(subS);
