@@ -49,7 +49,7 @@ public class MainFrame extends javax.swing.JFrame {
         if (s.isEmpty()) {
             s = "0";
         }
-        s = s.replaceAll("" + decimalSeparator, ".");
+        s = s.replaceAll("\\" + decimalSeparator, ".");
         operand = Double.parseDouble(s);
         switch (operator) {
             case ADD:
